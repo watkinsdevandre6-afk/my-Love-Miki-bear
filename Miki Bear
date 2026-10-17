@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10051f">
+<title>A New Little World for Mikayla ♡</title>
+<style>
+:root{--night:#09051b;--pink:#bd649f;--lavender:#f1e6ff;--line:rgba(194,116,190,.22)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--lavender);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(ellipse at 50% 15%,#28104b 0%,#120727 42%,#070416 100%);overflow-x:hidden}
+#sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.star{position:absolute;border-radius:50%;background:#fff6ff;box-shadow:0 0 9px 2px rgba(228,192,255,.5);animation:twinkle 3s ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.2;transform:scale(.7)}to{opacity:1;transform:scale(1.2)}}
+.floater{position:fixed;top:-45px;z-index:3;pointer-events:none;animation:fall linear forwards;filter:drop-shadow(0 0 5px rgba(160,205,255,.3));will-change:transform}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(380deg);opacity:.15}}
+main{position:relative;z-index:1;max-width:760px;margin:auto;padding:34px 17px 55px}
+.hero{text-align:center;padding:40px 8px 35px}
+.moon{font-size:70px;color:#f9e8ff;text-shadow:0 0 28px #c18bff;line-height:1.1}
+.eyebrow{font:12px/1.8 Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#c66fa9;margin:18px 0}
+h1{font-size:clamp(2.5rem,8vw,4.7rem);font-weight:normal;line-height:1.04;color:#d47ab0;margin:14px 0 20px}
+h1 span{display:block;color:#f1dffb;font-size:.58em;font-style:italic;margin-top:10px}
+.intro{max-width:570px;margin:0 auto;color:#e8dbf4;font-size:1.2rem;line-height:1.85}
+.card{border:1px solid var(--line);border-radius:25px;background:linear-gradient(145deg,rgba(16,7,39,.9),rgba(20,5,36,.82));box-shadow:0 15px 55px rgba(0,0,0,.17),inset 0 0 35px rgba(112,51,153,.06);padding:30px clamp(20px,5vw,42px);margin:22px 0;text-align:center;backdrop-filter:blur(5px)}
+h2{font-weight:normal;color:#cb76ab;font-size:clamp(1.65rem,5vw,2.35rem);margin:0 0 20px}
+p{font-size:1.12rem;line-height:1.9;margin:12px 0;color:#e9e0f5}
+.small{font-size:.98rem;color:#c6b1d8}
+button{font:500 1rem Arial,sans-serif;color:#fff5ff;border:1px solid rgba(211,129,206,.38);background:linear-gradient(100deg,#25085b,#460538);border-radius:999px;padding:15px 21px;cursor:pointer;transition:transform .18s,filter .18s,box-shadow .18s;box-shadow:0 6px 24px rgba(0,0,0,.18);margin:7px;max-width:100%}
+button:hover,button:focus-visible{filter:brightness(1.25);transform:translateY(-2px);box-shadow:0 8px 28px rgba(167,78,201,.2);outline:2px solid #d47ab0;outline-offset:2px}
+.choices{display:flex;flex-direction:column;gap:9px;margin-top:20px}
+.choices button{width:100%;margin:0;padding:17px 14px}
+.reveal{display:none;margin:20px auto 0;padding:18px;border-radius:17px;background:rgba(119,49,128,.16);border:1px solid rgba(198,116,190,.2);line-height:1.85;color:#f2e7fb;font-size:1.08rem}
+.reveal.show{display:block;animation:appear .4s ease}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.seal{font-size:3.2rem;display:block;margin:10px auto;filter:drop-shadow(0 0 12px #b65be0)}
+.pills{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:18px 0}
+.pill{background:rgba(64,22,91,.6);border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:#ecd7f5;font:14px Arial,sans-serif}
+.teddy{font-size:4.5rem;border:0;background:transparent;box-shadow:none;display:block;margin:6px auto;padding:8px;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-7px) rotate(-3deg)}}
+footer{text-align:center;padding:28px 8px 15px;color:#a88cbf}
+footer .signature{font-size:2rem;color:#ce77ad;margin-top:12px}
+.burst{animation:burst .8s ease}
+@keyframes burst{50%{transform:scale(1.06);filter:brightness(1.4)}}
+@media(min-width:620px){.card{padding-top:38px;padding-bottom:38px}.intro{font-size:1.28rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* FULL-SCREEN EMERGENCY TEDDY HUG */
+.hug-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at center,rgba(119,43,115,.94),rgba(12,4,31,.98) 72%);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease;overflow:hidden}
+.hug-overlay.active{opacity:1;visibility:visible;pointer-events:auto}
+.hug-glow{position:absolute;width:min(90vw,650px);aspect-ratio:1;border-radius:50%;background:rgba(255,143,211,.16);filter:blur(25px);animation:glowPulse 2s ease-in-out infinite alternate}
+.hug-content{position:relative;z-index:1;width:min(100%,560px);text-align:center;transform:translateY(100vh) scale(.45);opacity:0}
+.hug-overlay.active .hug-content{animation:teddyArrives 1.05s cubic-bezier(.2,.9,.25,1.2) forwards}
+.hug-bear-wrap{position:relative;width:100%;height:clamp(190px,43vw,300px);display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 14px 28px rgba(0,0,0,.28))}
+.hug-bear{font-size:clamp(8rem,28vw,13rem);line-height:1;display:block;position:relative;z-index:2;transform-origin:center bottom;animation:bearSqueeze 1.4s ease-in-out 1.05s infinite}
+.hug-arm{position:absolute;z-index:1;font-size:clamp(4rem,14vw,6rem);top:42%;opacity:0;filter:drop-shadow(0 4px 8px rgba(0,0,0,.15))}
+.hug-arm.left{right:53%;transform:rotate(-35deg) translateX(90px)}
+.hug-arm.right{left:53%;transform:scaleX(-1) rotate(-35deg) translateX(90px)}
+.hug-overlay.active .hug-arm.left{animation:armOpenLeft .65s ease-out .7s forwards}
+.hug-overlay.active .hug-arm.right{animation:armOpenRight .65s ease-out .7s forwards}
+.hug-title{font-size:clamp(2rem,7vw,3.4rem);color:#ffd9f0;margin:8px 0 12px;text-shadow:0 0 22px rgba(255,160,220,.45)}
+.hug-message{font-size:clamp(1rem,3.8vw,1.2rem);line-height:1.8;color:#fff0fa;margin:0 auto;max-width:480px}
+.hug-close{margin-top:22px;background:rgba(255,226,246,.13);border-color:rgba(255,220,245,.55)}
+.hug-heart{position:absolute;bottom:-50px;left:var(--x);font-size:var(--size);opacity:0;pointer-events:none;animation:heartRise var(--duration) ease-out var(--delay) forwards}
+.hug-overlay.active .hug-heart{opacity:1}
+@keyframes teddyArrives{0%{transform:translateY(100vh) scale(.45);opacity:0}65%{transform:translateY(-16px) scale(1.08);opacity:1}82%{transform:translateY(7px) scale(.97)}100%{transform:translateY(0) scale(1);opacity:1}}
+@keyframes armOpenLeft{0%{opacity:0;transform:rotate(-35deg) translateX(90px)}100%{opacity:1;transform:rotate(-20deg) translateX(-8px)}}
+@keyframes armOpenRight{0%{opacity:0;transform:scaleX(-1) rotate(-35deg) translateX(90px)}100%{opacity:1;transform:scaleX(-1) rotate(-20deg) translateX(-8px)}}
+@keyframes bearSqueeze{0%,100%{transform:scale(1,1)}35%{transform:scale(1.08,.94)}55%{transform:scale(.96,1.05)}75%{transform:scale(1.04,.98)}}
+@keyframes glowPulse{from{transform:scale(.88);opacity:.55}to{transform:scale(1.12);opacity:1}}
+@keyframes heartRise{0%{transform:translateY(0) scale(.5) rotate(-15deg);opacity:0}15%{opacity:.95}100%{transform:translateY(-115vh) scale(1.25) rotate(25deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.hug-overlay.active .hug-content,.hug-overlay.active .hug-arm.left,.hug-overlay.active .hug-arm.right,.hug-bear,.hug-glow,.hug-heart{animation:none!important}.hug-content{transform:none;opacity:1}.hug-arm{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+
+<!-- Animated emergency hug overlay -->
+<div class="hug-overlay" id="hugOverlay" role="dialog" aria-modal="true" aria-labelledby="hugTitle" aria-describedby="hugMessage" onclick="if(event.target===this)closeTeddyHug()">
+  <div class="hug-glow" aria-hidden="true"></div>
+  <span class="hug-heart" style="--x:8%;--size:2.2rem;--duration:4.4s;--delay:.1s" aria-hidden="true">💗</span>
+  <span class="hug-heart" style="--x:22%;--size:1.7rem;--duration:3.8s;--delay:.6s" aria-hidden="true">♡</span>
+  <span class="hug-heart" style="--x:76%;--size:2rem;--duration:4.1s;--delay:.3s" aria-hidden="true">💕</span>
+  <span class="hug-heart" style="--x:91%;--size:1.8rem;--duration:4.7s;--delay:.8s" aria-hidden="true">✨</span>
+
+  <div class="hug-content">
+    <div class="hug-bear-wrap" aria-hidden="true">
+      <span class="hug-arm left">🤎</span>
+      <span class="hug-arm right">🤎</span>
+      <span class="hug-bear">🧸</span>
+    </div>
+    <h2 class="hug-title" id="hugTitle">BIG TEDDY HUG INCOMING! 💗</h2>
+    <p class="hug-message" id="hugMessage">Come here, Miki Bear. 🥹💗 Sending you the biggest hug ever. Hold on as long as you need. You are loved, you are precious, and you don't have to face every difficult moment alone. — Shé ♡</p>
+    <button class="hug-close" onclick="closeTeddyHug()">Stay in this hug a little longer ♡ / Close</button>
+  </div>
+</div>
+
+<main>
+<header class="hero">
+  <div class="moon">☾</div>
+  <div class="eyebrow">a little surprise universe, made for you</div>
+  <h1>For Mikayla… <span>from Shé, with all my heart ♡</span></h1>
+  <p class="intro">I wanted to make you a tiny place full of soft skies, little surprises, and words that might make you smile. So take your time, tap around, and see what I left here for you. 🌙</p>
+  <button onclick="sprinkle(22);reveal('welcomeNote')">Step into your little universe ✨</button>
+  <div class="reveal" id="welcomeNote">You made it! Consider this your own little pocket of the night sky—no rush, no rules, just a few sweet things waiting to be discovered. 💜</div>
+</header>
+
+<section class="card">
+  <h2>Things I hope you never forget 💗</h2>
+  <p>You don't have to do anything extraordinary to be worth appreciating. You being yourself is already something lovely.</p>
+  <p>Your feelings matter. Your dreams matter. And even on the days when you don't feel your brightest, you still deserve gentleness, patience, and reasons to smile.</p>
+  <button onclick="reveal('kindNote')">Keep this little reminder ♡</button>
+  <div class="reveal" id="kindNote">If today has been a lot, take a breath, unclench your shoulders, and remember: you don't have to have everything figured out to be doing just fine. I'm cheering for you, Mikayla. 🌷</div>
+</section>
+
+<section class="card">
+  <h2>Imagine this with me… 🌧️</h2>
+  <p>Pick a tiny scene and let your imagination do the rest.</p>
+  <div class="choices">
+    <button onclick="choose('scene','A rainy afternoon, a cosy blanket, our favourite songs playing softly, and absolutely no need to be anywhere else. 🌧️')">A rainy-day hideaway 🌧️</button>
+    <button onclick="choose('scene','A sunset walk where the sky turns pink and gold, and we keep stopping because the view is pretty—or because the company is. 🌅')">A sunset walk 🌅</button>
+    <button onclick="choose('scene','Trading songs and explaining why each one matters, until the playlist becomes a little map of our moods. 🎶')">A song-sharing evening 🎶</button>
+    <button onclick="choose('scene','A silly little adventure that becomes funny because something goes wrong—and then becomes a story we tell again. ✨')">A goofy little adventure ✨</button>
+  </div>
+  <div class="reveal" id="scene" aria-live="polite"></div>
+</section>
+
+<section class="card">
+  <h2>A tiny envelope, just for you 💌</h2>
+  <p>There’s a letter tucked inside. Tap the envelope when you're ready.</p>
+  <button class="seal" aria-label="Open the secret letter" onclick="reveal('letter');sprinkle(12)">💌</button>
+  <div class="reveal" id="letter">
+    <p><strong>To Mikayla, from Shé ♡</strong></p>
+    <p>I wanted you to have something you could open and know that it was made with you in mind. I hope I can keep giving you little reasons to smile—not only with words on a screen, but with kindness, honesty, and the way I show up for you.</p>
+    <p>You don't have to be perfect or pretend to be okay all the time. I hope you feel safe being your real self with me. I'm grateful to know you, and I'm excited for all the little things we might still discover about each other.</p>
+    <p>Whenever you need a reminder, let this be one: you are appreciated, you are worth the effort, and you deserve love that feels gentle and genuine. ❤️</p>
+    <p><strong>With love, Shé 💜</strong></p>
+  </div>
+</section>
+
+<section class="card">
+  <h2>The little treasure box 🎁</h2>
+  <p>Three tiny treasures are tucked away. Open them one by one!</p>
+  <div class="choices">
+    <button onclick="choose('treasure1','Treasure #1 — A compliment: your presence can make an ordinary moment feel a little more special. 🌸')">Open treasure one 🌸</button>
+    <button onclick="choose('treasure2','Treasure #2 — A wish: I hope life gives you more reasons to feel proud of yourself, laugh until your cheeks hurt, and feel loved in ways that matter. ✨')">Open treasure two ✨</button>
+    <button onclick="choose('treasure3','Treasure #3 — A flirty confession: if smiling at your name were a talent, I fear I would be getting suspiciously good at it. 😌💕')">Open treasure three 💕</button>
+  </div>
+  <div class="reveal" id="treasure1"></div>
+  <div class="reveal" id="treasure2"></div>
+  <div class="reveal" id="treasure3"></div>
+</section>
+
+<section class="card">
+  <h2>A little wish beneath the stars 🌙</h2>
+  <p>Close your eyes for a second, think of a wish for yourself, then tap a star to let it sparkle.</p>
+  <button onclick="wish()" aria-label="Make a wish">⭐ Make a wish ⭐</button>
+  <div class="reveal" id="wishNote">May something good find you soon. May you feel proud of how far you've come, and may the days ahead hold unexpected joy, warm laughter, and people who treat your heart with care. ✨</div>
+</section>
+
+<section class="card">
+  <h2>Emergency teddy hugs 🧸</h2>
+  <p>This little bear has one very important job: reminding you that you're cared about. Tap for a hug and a message.</p>
+  <button class="teddy" onclick="teddyHug()" aria-label="Tap the teddy bear for a hug">🧸💗</button>
+  <div class="reveal" id="teddyNote">Sending you the biggest virtual teddy hug. Hold it for as long as you need. I hope your day gets softer, your heart feels lighter, and you remember that someone is wishing you well. 🤗</div>
+</section>
+
+<section class="card">
+  <h2>Open when you need a smile 🌷</h2>
+  <p>Choose the little note that feels right for you today. Only the message you choose will open. ♡</p>
+  <div class="choices">
+    <button onclick="choose('smileNote','Hey, you. ♡ Just a little reminder that you are more special than you sometimes realize. You don\'t have to do anything extraordinary to deserve kindness, love, or a reason to smile. You being you is already something beautiful. 🩵')">When you forget how special you are 🩵</button>
+    <button onclick="choose('smileNote','Shhh, take a little breath, okay? ♡ You don\'t have to have everything figured out today. It\'s okay to rest, to feel things, and to take your time. I hope this little corner of your day reminds you that tomorrow can bring a fresh start. 🌧️')">When you’ve had a difficult day 🌧️</button>
+    <button onclick="choose('smileNote','I hope you never underestimate what you\'re capable of. Even on the days when things feel difficult, there\'s still so much good ahead of you. Take it one little step at a time. I\'m rooting for you, always. 🌷')">When you need someone to believe in you 🌷</button>
+    <button onclick="choose('smileNote','You don\'t have to be perfect to be appreciated. You don\'t have to hide your tired days or pretend to be okay all the time. You deserve patience, gentleness, and the freedom to be yourself, even when life feels messy. 💗')">When you feel like you’re not enough 💗</button>
+    <button onclick="choose('smileNote','Mikayla, if I could send you a tiny hug through this screen, I would. ♡ I hope life gives you plenty of reasons to laugh, moments that make your heart feel light, and little reminders that you\'re appreciated. Sending you the softest hug, from Shé. 💌')">A little reminder from Shé 💌</button>
+  </div>
+  <div class="reveal" id="smileNote"></div>
+</section>
+
+<section class="card">
+  <h2>A few special messages from Shé ♡</h2>
+  <p>Before you reach the very last message, there are a few little hidden notes here just for you. Open whichever one calls to you. 🩵</p>
+  <div class="choices">
+    <button onclick="reveal('secretOne');sprinkle(8)">Miki Bear 🩵</button>
+    <div class="reveal" id="secretOne">Hey, you. ♡ Just in case you forget today: you are special in ways you might not even notice. You don't have to do anything to earn kindness or a reason to smile. Being you is already something beautiful. — Shé 🩵</div>
+
+    <button onclick="reveal('secretTwo');sprinkle(8)">A soft place to land 🌧️</button>
+    <div class="reveal" id="secretTwo">If today feels heavy, take a breath and be gentle with yourself, okay? You don't have to figure everything out at once. Rest if you need to. Tomorrow can be a fresh page, and you deserve patience along the way. ♡ — Shé</div>
+
+    <button onclick="reveal('secretThree');sprinkle(8)">A little note of belief 🌷</button>
+    <div class="reveal" id="secretThree">I hope you never forget how much possibility lives inside you. Even when things are hard, you can take them one small step at a time. I'm cheering for you, and I hope you keep believing in yourself too. 🌷 — Shé</div>
+
+    <button onclick="reveal('secretFive');sprinkle(8)">A reminder that you are enough 💗</button>
+    <div class="reveal" id="secretFive">You don't have to be perfect, or pretend you're okay every moment, to be worthy of care. You deserve gentleness on your messy days, too. Please remember that you are enough just as you are. ♡ — Shé 💗</div>
+
+    <button onclick="reveal('loveLetterForMiki');sprinkle(24)">A letter from my heart, Miki Bear 💌</button>
+    <div class="reveal" id="loveLetterForMiki">
+      <p><strong>To my Miki Bear… ♡</strong></p>
+      <p>I wish you could see yourself through my eyes, even if it were just for a moment. Maybe then you'd understand why I find you so mesmerizing, so captivating, so unbelievably beautiful.</p>
+      <p>I love your eyes and the way they seem to sparkle whenever I look at you. I love your smile, especially when you give me that little side-eye while you're smiling or laughing at me. 😂♡ And I love that you're my little bully, because somehow you manage to tease me and make me fall for you even harder at the same time.</p>
+      <p>But your laugh, baby… your laugh is something I don't think I'll ever be able to explain properly. There's something about it that reaches places in my heart I didn't even know existed. Whenever you laugh, it feels like time slows down. Everything around me becomes a blur, the world grows quiet, and for a little moment, all I can see is you. It's like my heart forgets how to do anything except love you. You make it feel as though fireworks are going off inside my chest, and somehow, even after all those fireworks, I still want to fall for you all over again.</p>
+      <p>You make me feel things I never knew I could feel. You make ordinary moments feel extraordinary just by being there. And the more I get to know you, the more I realise that it's not just your beauty that captivates me. It's <em>you</em>. Your laugh, your voice, your little ways, your playful heart, and all those tiny things you probably don't even realise I'm falling in love with.</p>
+      <p>I want you today, Mikayla. I want you tomorrow, and on all the ordinary days in between. I want the silly moments, the laughter, the teasing, the quiet moments, and the days when neither of us knows exactly what to say. I want to keep discovering new reasons to love you, even after I've memorised all the little things that make you who you are.</p>
+      <p>And more than anything, I want to take care of your heart. ♡</p>
+      <p>I want to be someone you can feel safe with. Someone you can come to when the world feels heavy. Someone who listens when you need to be heard, holds you close when you need comfort, and reminds you of your worth when you struggle to see it yourself. I want to treat your feelings with tenderness, your trust with respect, and your heart with the kind of love that doesn't leave you wondering whether you're cherished.</p>
+      <p>I know love isn't just about saying beautiful things. It's about showing up, being patient, learning each other, and choosing to care even on the difficult days. And that's the kind of love I want to give you — not only in the moments when everything feels like fireworks, but also in the quiet moments when love means being gentle, understanding, and there for you.</p>
+      <p>You're so beautiful to me, Miki Bear. You're my captivating girl, my favourite little bully, the laugh that melts me, the eyes that make me forget what I was about to say, and the person who makes my heart feel like it's discovered a whole new universe.</p>
+      <p>If I get the privilege of loving you for all the days ahead, I want to keep doing it with care. I want to protect the trust between us, nurture what we share, and remind you in a thousand little ways that your heart is precious to me.</p>
+      <p>Today, tomorrow, and for as long as life allows me to stand beside you, I want to keep loving you — learning you, laughing with you, and finding my way back to you, over and over again.</p>
+      <p><strong>You have my heart, my beautiful girl. And I want to spend my time showing you how gently and sincerely it can love yours. ♡</strong></p>
+      <p><strong>Forever finding more reasons to love you,</strong><br><strong>From Shé, with all my heart. 🩵♡</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>One last thing, Mikayla… 💜</h2>
+  <p>If this little page gave you even one genuine smile, then it did what I hoped it would. You don't need to have all the answers about tomorrow for today to mean something.</p>
+  <p>I'm glad our paths crossed. I hope we keep finding reasons to laugh, learning new little things about each other, and making memories that feel like ours. No pressure to rush the story—just a wish to make the next pages kind and beautiful.</p>
+  <button onclick="reveal('finalSecret');sprinkle(30)">One final hidden message… ✨</button>
+  <div class="reveal" id="finalSecret">Psst, Mikayla… out of all the things I could have made, I chose to make this little universe for you. I hope you felt the care tucked into every corner. You are someone worth making something special for. ♡</div>
+  <div class="spacer"></div>
+  <button onclick="reveal('loveFromShe');sprinkle(12)">My Love 🩵♡</button>
+  <div class="reveal" id="loveFromShe">Mikayla, I made this little world because sometimes a simple message doesn't feel big enough for everything I want to say. So I filled it with little surprises, hearts, flowers, and pieces of my affection for you. But at the end of it all, I want you to know one thing above everything else: I love you. ♡ Thank you for being someone so special to me. I hope this makes you smile whenever you need it. From Shé, with love. 🩵</div>
+</section>
+
+<footer>
+  <div>Built from little thoughts, a shy smile, and lots of affection.</div>
+  <div class="signature">🩵♡From Shé, For Miki Bear. Forever and Always With Love♡🩵</div>
+  <div class="eyebrow">a little universe for Mikayla · made with love</div>
+</footer>
+</main>
+
+<script>
+const sky = document.getElementById('sky');
+
+for (let i = 0; i < 95; i++) {
+  const s = document.createElement('i');
+  s.className = 'star';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = Math.random() * 100 + '%';
+
+  const z = Math.random() * 2.6 + .7;
+  s.style.width = z + 'px';
+  s.style.height = z + 'px';
+  s.style.animationDelay = Math.random() * 4 + 's';
+  s.style.animationDuration = 2 + Math.random() * 3 + 's';
+  sky.appendChild(s);
+}
+
+function reveal(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('show');
+}
+
+function choose(id, message) {
+  const el = document.getElementById(id);
+  el.textContent = message;
+  el.classList.add('show');
+}
+
+const symbols = ['🩵', '♡', '💗', '💕', '🌸', '🌷', '🌹', '✨', '🧸'];
+let active = 0;
+
+function sprinkle(count = 8) {
+  for (let i = 0; i < count; i++) {
+    if (active >= 24) break;
+
+    active++;
+    const f = document.createElement('span');
+    f.className = 'floater';
+    f.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    f.style.left = (3 + Math.random() * 94) + 'vw';
+    f.style.fontSize = (14 + Math.random() * 8) + 'px';
+    f.style.animationDuration = (7 + Math.random() * 5) + 's';
+    f.style.setProperty('--drift', (Math.random() * 150 - 75) + 'px');
+    f.style.opacity = .65 + Math.random() * .3;
+
+    document.body.appendChild(f);
+
+    f.addEventListener('animationend', () => {
+      f.remove();
+      active--;
+    }, { once: true });
+  }
+}
+
+setInterval(() => sprinkle(1), 1450);
+
+function wish() {
+  reveal('wishNote');
+  sprinkle(12);
+  document.getElementById('wishNote').classList.add('burst');
+}
+
+/* Emergency teddy bear hug animation */
+function teddyHug() {
+  const overlay = document.getElementById('hugOverlay');
+
+  overlay.classList.remove('active');
+  void overlay.offsetWidth;
+  overlay.classList.add('active');
+
+  document.body.style.overflow = 'hidden';
+  sprinkle(18);
+
+  const teddyButton = document.querySelector('.teddy');
+  teddyButton.classList.add('burst');
+
+  setTimeout(() => teddyButton.classList.remove('burst'), 850);
+}
+
+function closeTeddyHug() {
+  const overlay = document.getElementById('hugOverlay');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeTeddyHug();
+  }
+});
+</script>
+</body>
+</html>
